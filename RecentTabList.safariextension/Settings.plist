@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>DefaultValue</key>
+		<real>20</real>
+		<key>Key</key>
+		<string>maxRecent</string>
+		<key>Title</key>
+		<string>Number of recent tabs</string>
+		<key>Titles</key>
+		<array>
+			<string>5</string>
+			<string>10</string>
+			<string>20</string>
+			<string>30</string>
+			<string>40</string>
+		</array>
+		<key>Type</key>
+		<string>PopUpButton</string>
+		<key>Values</key>
+		<array>
+			<real>5</real>
+			<real>10</real>
+			<real>20</real>
+			<real>30</real>
+			<real>40</real>
+		</array>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>showOpenTabs</string>
+		<key>Title</key>
+		<string>Show open tabs</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>background</string>
+		<key>Key</key>
+		<string>whereTabs</string>
+		<key>Title</key>
+		<string>Open tabs in... </string>
+		<key>Titles</key>
+		<array>
+			<string>background</string>
+			<string>foreground</string>
+		</array>
+		<key>Type</key>
+		<string>RadioButtons</string>
+		<key>Values</key>
+		<array>
+			<string>background</string>
+			<string>foreground</string>
+		</array>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<false/>
+		<key>Key</key>
+		<string>showFavIcon</string>
+		<key>Title</key>
+		<string>Show website icon (uses g.etfv.co)</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+</array>
+</plist>
