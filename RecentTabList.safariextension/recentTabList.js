@@ -5,9 +5,11 @@ safari.extension.settings.addEventListener("change", settingChanged, false); // 
 
 // when a tab is closed, save it
 safari.application.addEventListener("close", function(event) {
-	var closedTab = event.target;
-	var index = closedTab.browserWindow === undefined ? 1 : closedTab.browserWindow.tabs.indexOf(closedTab); // to prevent an error if it's the last tab in a window
-	new TabRef(closedTab.title, closedTab.url, index);
+	if (safari.extension.settings.trackPrivateBrowsing || !safari.application.privateBrowsing.enabled) { // don't track if private browsing and setting enabled
+			var closedTab = event.target;
+			var index = closedTab.browserWindow === undefined ? 1 : closedTab.browserWindow.tabs.indexOf(closedTab); // to prevent an error if it's the last tab in a window
+			new TabRef(closedTab.title, closedTab.url, index);
+	} 
 }, true);
 
 // update filter on text changes

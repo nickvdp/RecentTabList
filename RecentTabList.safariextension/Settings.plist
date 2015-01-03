@@ -68,5 +68,15 @@
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>trackPrivateBrowsing</string>
+		<key>Title</key>
+		<string>Track closed tabs while Private Browsing is on</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
 </array>
 </plist>
