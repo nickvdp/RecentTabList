@@ -26,14 +26,11 @@ $("#clearFilter").on("click", function(event) {
 // handle settings changes
 function settingChanged(event) {
 	if (event.key == "maxRecent") {
-		if (recentList.length > safari.extension.settings.maxRecent) {
-			recentList = recentList.slice(0, safari.extension.settings.maxRecent);
-			for (var i = recentList.length - 1; i <= safari.extension.settings.maxRecent; i--) {
-				removeTab(recentList[i]);
-			}
+		while (recentList.length > safari.extension.settings.maxRecent) {
+			removeTab(recentList.pop());
 		}
 	}
-	
+		
 	if (event.key == "openTabsFirst") {
 		updateSectionOrder();
 	}
@@ -131,7 +128,7 @@ function OpenTab(newTab) {
 // Enforces maximum length of the list
 function addToRecent(tabRef) {
 	recentList.unshift(tabRef);
-	if (recentList.length > safari.extension.settings.maxRecent) {
+	while (recentList.length > safari.extension.settings.maxRecent) {
 		removeTab(recentList.pop());
 	}
 }
