@@ -17,6 +17,11 @@ html {
 	position: relative;
 }
 
+#split {
+	margin: 0.5em 0.3em;
+	opacity: 0.5;
+}
+
 
 
 #clearFilter {
@@ -94,10 +99,6 @@ background-color: blue;
 	margin: 0.3em;
 	padding-top: 0.3em;
 }
-#openHeader {
-	border-top: 1px solid rgba(0,0,0,0.3);
-	margin-top: 0.3em;
-}
 
 #recentSection, #openSection {
 	padding: 0;
@@ -133,4 +134,31 @@ li.tab {
 	margin: 0;
 	position: absolute;
 	display: block;
+}
+
+
+
+#recentSection .tab:hover .delete {
+	opacity: 0.3;
+}
+
+#recentSection .tab .delete:hover {
+	opacity: 0.8 !important;
+}
+
+.delete {
+	width: 1em;
+	height: 1em;
+	opacity: 0;
+	top: 0.4em;
+	right: 0.4em;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: block;
+}
+
+li.active {
+	background-color: green !important;
+	font-size: 20px !important;
 }

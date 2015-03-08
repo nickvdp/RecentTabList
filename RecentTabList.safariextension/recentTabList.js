@@ -33,6 +33,20 @@ function settingChanged(event) {
 			}
 		}
 	}
+	
+	if (event.key == "openTabsFirst") {
+		updateSectionOrder();
+	}
+}
+
+function updateSectionOrder() {
+		if (safari.extension.settings.openTabsFirst) {
+			$("#openGroup").insertBefore("#recentGroup");
+			$("#split").insertAfter("#openGroup");
+		} else {
+			$("#recentGroup").insertBefore("#openGroup").addClass("firstGroup");
+			$("#split").insertAfter("#recentGroup");
+		}
 }
 
 // filter displayed tabs based on text in URL / title
@@ -64,12 +78,14 @@ function TabRef(title, url, index) {
 	} else {
 		var th = this;
 		this.listItem = $("<li class='tab' title='" + this.title + "\x0A" + this.url + "'><span>" + truncate(this.title, 60) + "</span></li>");
-		if (safari.extension.settings.showFavIcon == true) {
-			var urlParts = this.url.split('/');
-			var protocol = urlParts[0];
-			var domain = urlParts[2];
-			$(this.listItem).prepend("<img class='favIcon' src='http://g.etfv.co/" + protocol + "//" + domain + "?defaulticon=lightpng'>")
-		}
+
+		// Delete button!
+		var deleteButton = $("<img src='close.svg' title='Remove from history' class='delete'></img>").appendTo(this.listItem);
+		deleteButton.on("click", function(event) {
+			event.stopPropagation();
+			th.listItem.remove();
+		});
+		
 		$("#recentSection").prepend(this.listItem);
 		this.listItem.on("click", function(event) {
 			openRecent(th);
@@ -89,14 +105,18 @@ function OpenTab(newTab) {
 		th.tab.activate();
 		safari.extension.popovers[0].hide();
 	});
+/*
+	got rid of this because it's a pay service now. Keeping the code around in case there's a good way to bring it back later
+	
 	if (safari.extension.settings.showFavIcon == true) {
 		var urlParts = this.tab.url.split('/');
 		var protocol = urlParts[0];
 		var domain = urlParts[2];
 		$(this.listItem).prepend("<img class='favIcon' src='http://g.etfv.co/" + protocol + "//" + domain + "?defaulticon=lightpng'>")
 	}
+*/
 	// Close button!
-	var closeButton = $("<img src='close.svg' class='close'></img>").appendTo(this.listItem);
+	var closeButton = $("<img src='close.svg' title='Close tab' class='close'></img>").appendTo(this.listItem);
 	closeButton.on("click", function(event) {
 		event.stopPropagation();
 		th.tab.close();
@@ -141,15 +161,19 @@ function popoverHandler(event) {
 
 // show the open tabs
 function populateOpenTabs() {
+	updateSectionOrder();
+	
 	$("#openSection").html("");
-	if (safari.extension.settings.showOpenTabs == true) {
+	if (safari.extension.settings.showOpenTabs == true) {		
 		var openTabs = getAllTabs();
 		for (var i in openTabs) {
 			new OpenTab(openTabs[i]);
 		}
 		$("#openHeader").show();
+		$("#split").show();
 	} else {
 		$("#openHeader").hide();
+		$("#split").hide();
 	}
 	updateSize();
 }

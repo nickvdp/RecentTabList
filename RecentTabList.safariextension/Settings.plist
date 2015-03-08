@@ -34,7 +34,37 @@
 		<key>Key</key>
 		<string>showOpenTabs</string>
 		<key>Title</key>
-		<string>Show open tabs</string>
+		<string>Show currently open tabs</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<false/>
+		<key>Key</key>
+		<string>openTabsFirst</string>
+		<key>Title</key>
+		<string>List open tabs first</string>
+		<key>Titles</key>
+		<array>
+			<string>background</string>
+			<string>foreground</string>
+		</array>
+		<key>Type</key>
+		<string>CheckBox</string>
+		<key>Values</key>
+		<array>
+			<string>background</string>
+			<string>foreground</string>
+		</array>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>trackPrivateBrowsing</string>
+		<key>Title</key>
+		<string>Track closed tabs while Private Browsing is on</string>
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
@@ -44,7 +74,7 @@
 		<key>Key</key>
 		<string>whereTabs</string>
 		<key>Title</key>
-		<string>Open tabs in... </string>
+		<string>Open tabs in...</string>
 		<key>Titles</key>
 		<array>
 			<string>background</string>
@@ -57,26 +87,6 @@
 			<string>background</string>
 			<string>foreground</string>
 		</array>
-	</dict>
-	<dict>
-		<key>DefaultValue</key>
-		<false/>
-		<key>Key</key>
-		<string>showFavIcon</string>
-		<key>Title</key>
-		<string>Show website icon (uses g.etfv.co)</string>
-		<key>Type</key>
-		<string>CheckBox</string>
-	</dict>
-	<dict>
-		<key>DefaultValue</key>
-		<true/>
-		<key>Key</key>
-		<string>trackPrivateBrowsing</string>
-		<key>Title</key>
-		<string>Track closed tabs while Private Browsing is on</string>
-		<key>Type</key>
-		<string>CheckBox</string>
 	</dict>
 </array>
 </plist>
