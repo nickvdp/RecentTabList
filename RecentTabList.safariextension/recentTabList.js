@@ -1,5 +1,6 @@
 var recentList = []; // recently closed tabs
 
+
 safari.application.addEventListener("popover", popoverHandler, true); // when opening popover
 safari.extension.settings.addEventListener("change", settingChanged, false); // when settings are changed
 
@@ -162,9 +163,15 @@ function populateOpenTabs() {
 	
 	$("#openSection").html("");
 	if (safari.extension.settings.showOpenTabs == true) {		
-		var openTabs = getAllTabs();
-		for (var i in openTabs) {
-			new OpenTab(openTabs[i]);
+		// Loop through open windows, list tabs
+		var windows = safari.application.browserWindows	
+		for (var x = 0; x < windows.length; x++) {
+			for (var i in windows[x].tabs) {
+				new OpenTab(windows[x].tabs[i]);
+			}
+			if (x + 1 < windows.length) {
+				$("#openSection").append("<hr class='windowSeparator'/>");
+			}
 		}
 		$("#openHeader").show();
 		$("#split").show();
@@ -173,15 +180,6 @@ function populateOpenTabs() {
 		$("#split").hide();
 	}
 	updateSize();
-}
-
-// Loop through open windows, get all tabs
-function getAllTabs() {
-	var starter = [];
-	for (var x in safari.application.browserWindows) {
-		$.merge(starter, safari.application.browserWindows[x].tabs);
-	}
-	return starter;
 }
 
 // Returns a center truncated string
