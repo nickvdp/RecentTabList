@@ -27,13 +27,18 @@ $("#clearFilter").on("click", function(event) {
 // handle settings changes
 function settingChanged(event) {
 	if (event.key == "maxRecent") {
-		while (recentList.length > safari.extension.settings.maxRecent) {
-			removeTab(recentList.pop());
-		}
+		trimList();
 	}
 		
 	if (event.key == "openTabsFirst") {
 		updateSectionOrder();
+	}
+}
+
+// enforce max list size
+function trimList() {
+	while (recentList.length > safari.extension.settings.maxRecent) {
+		removeTab(recentList.pop());
 	}
 }
 
@@ -153,6 +158,7 @@ function removeTab(tabRef) {
 // On popovers 
 function popoverHandler(event) {
 	if (event.target.identifier !== "com.nickvdp.tablist.popover") return;
+	trimList();
 	populateOpenTabs();
 	updateFilter();
 }
