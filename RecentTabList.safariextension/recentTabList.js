@@ -71,6 +71,14 @@ function updateSize() {
 	safari.extension.popovers[0].height = $("body").height() + 16;
 }
 
+function buildListItem(tab) {
+	var span = $("<span></span>").text(truncate(tab.title, 60));
+	var listItem = $("<li class='tab'></li>")
+		.attr("title", tab.title + "\x0A" + tab.url)
+		.append(span);
+	return listItem;
+}
+
 // Create a reference to the recently closed tab
 function TabRef(title, url, index) {
 	this.title = title;
@@ -80,7 +88,8 @@ function TabRef(title, url, index) {
 		delete this; // might be a new tab page or something else, no URL so just bail. 
 	} else {
 		var th = this;
-		this.listItem = $("<li class='tab' title='" + this.title + "\x0A" + this.url + "'><span>" + truncate(this.title, 60) + "</span></li>");
+
+		this.listItem = buildListItem(th);
 
 		// Delete button!
 		var deleteButton = $("<img src='close.svg' title='Remove from history' class='delete'></img>").appendTo(this.listItem);
@@ -101,7 +110,9 @@ function TabRef(title, url, index) {
 function OpenTab(newTab) {
 	this.tab = newTab;
 	var th = this;
-	this.listItem = $("<li class='tab' title='" + this.tab.title + "\x0A" + this.tab.url + "'><span>" + truncate(this.tab.title, 60) + "</span></li>");
+
+	this.listItem = buildListItem(th.tab);
+
 	$("#openSection").append(this.listItem);
 	this.listItem.on("click", function(event) {
 		th.tab.browserWindow.activate();
