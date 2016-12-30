@@ -33,6 +33,18 @@ function settingChanged(event) {
 	if (event.key == "openTabsFirst") {
 		updateSectionOrder();
 	}
+
+	if (event.key == "showURL") {
+		updateShowURL();
+	}
+}
+
+function updateShowURL() {
+	if (safari.extension.settings.showURL) {
+		$(".url").show();
+	} else {
+		$(".url").hide();
+	}
 }
 
 // enforce max list size
@@ -76,6 +88,13 @@ function buildListItem(tab) {
 	var listItem = $("<li class='tab'></li>")
 		.attr("title", tab.title + "\x0A" + tab.url)
 		.append(span);
+	var urlDiv = $("<div></div>").text(truncate(tab.url, 110)).addClass("url");
+	listItem.append(urlDiv);
+	if (safari.extension.settings.showURL) {
+		urlDiv.show();
+	} else {
+		urlDiv.hide();
+	}
 	return listItem;
 }
 

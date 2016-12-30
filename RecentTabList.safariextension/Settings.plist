@@ -88,5 +88,15 @@
 			<string>foreground</string>
 		</array>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>false</string>
+		<key>Key</key>
+		<string>showURL</string>
+		<key>Title</key>
+		<string>Show URL</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
 </array>
 </plist>
