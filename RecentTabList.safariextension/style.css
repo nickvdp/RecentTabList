@@ -169,3 +169,26 @@ li.active {
 	background-color: green !important;
 	font-size: 20px !important;
 }
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: rgba(0,0,0,0.6);
+	}
+
+	#openSection .tab:hover, #recentSection .tab:hover {
+		background-color: rgba(1,1,1,0.3) !important;
+	}
+
+	#filter {
+		border-color: rgba(1,1,1,0.1) !important;
+		background- !important;
+	}
+
+	html {
+		color: #eee !important;
+	}
+
+	.close {
+		filter: invert(100%);
+	}
+}
