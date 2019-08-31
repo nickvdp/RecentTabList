@@ -1,3 +1,7 @@
+Discontinued :anguished:
+-----
+Apple has completely [discontinued support](https://developer.apple.com/safari/extensions/) for "legacy" .safariextz extensions in macOS Catalina. (It was deprecated but still functional in Mojave and High Sierra.) I've chosen to stop supporting this extension. The final version (1.7) is still available [here](https://github.com/nickvdp/RecentTabList/raw/master/RecentTabList.safariextz). Recent versions of Safari have some similar features (for example, a list of recently closed tabs in the History menu).
+
 Recent Tab List for Safari
 =====================
 
